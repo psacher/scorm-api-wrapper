@@ -3,9 +3,9 @@
 /* ===========================================================
 
 pipwerks SCORM Wrapper for JavaScript
-v1.1.20150614
+v1.1.20160322
 
-Created by Philip Hutchison, January 2008-2014
+Created by Philip Hutchison, January 2008-2016
 https://github.com/pipwerks/scorm-api-wrapper
 
 Copyright (c) Philip Hutchison
@@ -473,7 +473,7 @@ pipwerks.SCORM.data.get = function(parameter){
         scorm = pipwerks.SCORM,
         trace = pipwerks.UTILS.trace,
         debug = scorm.debug,
-        traceMsgPrefix = "SCORM.data.get(" +parameter +") ";
+        traceMsgPrefix = "SCORM.data.get('" +parameter +"') ";
 
     if(scorm.connection.isActive){
 
@@ -493,7 +493,7 @@ pipwerks.SCORM.data.get = function(parameter){
             //If value is an empty string, check errorCode to make sure there are no errors
             if(value !== "" || errorCode === 0){
 
-                //GetValue is successful.  
+                //GetValue is successful.
                 //If parameter is lesson_status/completion_status or exit status, let's
                 //grab the value and cache it so we can check it during connection.terminate()
                 switch(parameter){
@@ -550,7 +550,7 @@ pipwerks.SCORM.data.set = function(parameter, value){
         trace = pipwerks.UTILS.trace,
         makeBoolean = pipwerks.UTILS.StringToBoolean,
         debug = scorm.debug,
-        traceMsgPrefix = "SCORM.data.set(" +parameter +") ";
+        traceMsgPrefix = "SCORM.data.set('" +parameter +"') ";
 
 
     if(scorm.connection.isActive){
@@ -592,6 +592,8 @@ pipwerks.SCORM.data.set = function(parameter, value){
         trace(traceMsgPrefix +"failed: API connection is inactive.");
 
     }
+
+	trace(traceMsgPrefix +" value: " +value);
 
     return success;
 
