@@ -184,7 +184,7 @@ pipwerks.SCORM.API.get = function(){
     }
 
     try {
-        if (win.parent && win.parent != win) {
+        if (!API && win.parent && win.parent != win) {
             trace("Searching in window.parent for API");
             API = find(win.parent);
         }
